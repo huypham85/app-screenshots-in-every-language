@@ -1,45 +1,231 @@
 <!doctype html>
-<!-- A fictional habit tracker ("Sprout") drawn in HTML so the example needs no Xcode project.
-     In real use, captures come from the iOS Simulator (see skills/make-app-screenshots). -->
+<!-- "Sprout", a fictional habit tracker drawn in HTML so the example needs no Xcode project.
+     make_captures.py renders one screen at a time (body[data-screen]) per locale.
+     In real use, captures come from the iOS Simulator. -->
 <html lang="{{lang}}" dir="{{dir}}"><head><meta charset="utf-8"><title>Sprout mock</title>
 <style>
   {{font_faces}}
+  :root { --ink: #17251E; --ink2: #5E6B64; --ink3: #9AA39E; --bg: #F5F4F9; --card: #FFFFFF;
+    --green: #22B07D; --green2: #8FE3B6; --green3: #E3F7EC; --lilac: #8B7CF6; --lilac3: #EEEBFF;
+    --peach: #FF9466; --peach3: #FFEDE4; --sky: #4FA8F0; --sky3: #E5F2FD; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 1206px; height: 2622px; overflow: hidden; }
-  body { background: #F2F2F7; font-family: "AK Text", -apple-system, sans-serif; color: #111; padding: 0 48px; }
-  .status { height: 160px; display: flex; justify-content: space-between; align-items: center; padding: 30px 50px 0;
-    font-weight: 600; font-size: 50px; direction: ltr; }
-  h1 { font-family: "AK Display"; font-size: 102px; font-weight: 700; margin: 90px 0 30px; letter-spacing: -1px; height: 124px; line-height: 124px; }
-  .sub { font-size: 44px; color: #6b6b70; margin-bottom: 50px; height: 56px; line-height: 56px; }
-  .ring { height: 290px; display: flex; align-items: center; gap: 40px; background: #fff; border-radius: 44px; padding: 44px; margin-bottom: 40px; }
-  .ring svg { flex: none; }
-  .ring b { display: block; font-size: 64px; } .ring span { font-size: 40px; color: #6b6b70; }
-  .habit { display: flex; align-items: center; gap: 34px; background: #fff; border-radius: 40px; padding: 38px 44px; margin-bottom: 26px; }
-  .dot { width: 96px; height: 96px; border-radius: 30px; display: grid; place-items: center; font-size: 52px; flex: none; }
-  .habit .name { font-size: 50px; font-weight: 600; } .habit .meta { font-size: 38px; color: #6b6b70; margin-top: 6px; }
-  .check { margin-inline-start: auto; width: 78px; height: 78px; border-radius: 39px; border: 6px solid #C7C7CC; flex: none; }
-  .check.on { background: #4F46E5; border-color: #4F46E5; }
-  .tabbar { position: absolute; left: 48px; right: 48px; bottom: 60px; height: 170px; background: rgba(255,255,255,.9);
-    border-radius: 85px; display: flex; justify-content: space-around; align-items: center; font-size: 34px; font-weight: 600; color: #8e8e93; }
-  .tabbar .on { color: #4F46E5; }
+  body { background: var(--bg); font-family: "AK Text", -apple-system, sans-serif; color: var(--ink); position: relative; }
+  .screen { display: none; position: absolute; inset: 0; padding: 0 44px; }
+  body[data-screen="today"] .today, body[data-screen="insights"] .insights, body[data-screen="lock"] .lock, body[data-screen="lockbare"] .lock { display: block; }
+  body[data-screen="lockbare"] .lock .stack { display: none; }
+
+  .status { height: 150px; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 54px 18px;
+    font-weight: 600; font-size: 50px; direction: ltr; letter-spacing: -.5px; }
+  .status .r { display: flex; gap: 14px; align-items: center; }
+  .bars { display: flex; gap: 6px; align-items: flex-end; } .bars i { width: 9px; background: currentColor; border-radius: 3px; }
+  .batt { width: 74px; height: 36px; border: 3.5px solid currentColor; border-radius: 12px; padding: 4px; opacity: .9; }
+  .batt b { display: block; width: 78%; height: 100%; background: currentColor; border-radius: 6px; }
+
+  .top { display: flex; justify-content: space-between; align-items: flex-end; margin: 70px 10px 34px; }
+  .eyebrow { font-size: 40px; font-weight: 600; color: var(--ink2); letter-spacing: .3px; }
+  h1 { font-family: "AK Display"; font-size: 110px; font-weight: 700; letter-spacing: -2px; line-height: 1.05; margin-top: 6px; }
+  .avatar { width: 118px; height: 118px; border-radius: 59px; background: linear-gradient(140deg, var(--peach), var(--lilac));
+    display: grid; place-items: center; color: #fff; font: 700 50px "AK Display"; }
+
+  .card { background: var(--card); border-radius: 56px; box-shadow: 0 2px 0 rgba(23,37,30,.03), 0 18px 40px rgba(23,37,30,.06); }
+
+  .garden { height: 520px; position: relative; overflow: hidden; padding: 52px 56px;
+    background: linear-gradient(160deg, #E9FBF1 0%, #F4F1FF 55%, #FFF1E9 100%); }
+  .garden .n { font: 700 190px/1 "AK Display"; letter-spacing: -6px; color: var(--ink); }
+  .garden .n small { font-size: 64px; letter-spacing: -1px; color: var(--green); margin-inline-start: 10px; }
+  .garden .l { font-size: 44px; font-weight: 600; color: var(--ink2); margin-top: 18px; }
+  .garden .msg { position: absolute; inset-inline-start: 56px; bottom: 50px; font-size: 38px; font-weight: 600; color: #178A60;
+    background: rgba(255,255,255,.8); padding: 16px 28px; border-radius: 30px; }
+  .garden svg { position: absolute; inset-inline-end: 30px; bottom: 0; }
+
+  .week { display: flex; justify-content: space-between; padding: 40px 46px; margin-top: 30px; }
+  .day { display: flex; flex-direction: column; align-items: center; gap: 16px; font-size: 32px; font-weight: 600; color: var(--ink3); }
+  .dot { width: 104px; height: 104px; border-radius: 52px; display: grid; place-items: center; font-size: 40px; font-weight: 700; color: var(--ink3);
+    border: 5px dashed #D9DED9; }
+  .dot.done { border: 0; background: var(--green); color: #fff; }
+  .dot.part { border: 0; background: conic-gradient(var(--green) 0 75%, var(--green3) 75% 100%); color: var(--ink); }
+  .dot.part span { width: 82px; height: 82px; border-radius: 41px; background: #fff; display: grid; place-items: center; font-size: 34px; }
+  .day.now { color: var(--ink); }
+
+  .sect { display: flex; justify-content: space-between; align-items: baseline; margin: 56px 14px 24px; }
+  .sect h2 { font-family: "AK Display"; font-size: 58px; letter-spacing: -.5px; }
+  .sect span { font-size: 38px; color: var(--green); font-weight: 600; }
+
+  .habit { display: flex; align-items: center; gap: 34px; padding: 34px 40px; margin-bottom: 22px; border-radius: 48px; }
+  .ico { width: 112px; height: 112px; border-radius: 34px; display: grid; place-items: center; flex: none; }
+  .ico svg { width: 58px; height: 58px; }
+  .habit .name { font-size: 48px; font-weight: 600; letter-spacing: -.3px; }
+  .habit .meta { font-size: 36px; color: var(--ink2); margin-top: 6px; }
+  .ring { margin-inline-start: auto; flex: none; position: relative; width: 96px; height: 96px; }
+  .ring > svg { position: absolute; inset: 0; width: 96px; height: 96px; }
+  .ring .ck { position: absolute; inset: 0; display: grid; place-items: center; }
+
+  .tabbar { position: absolute; left: 70px; right: 70px; bottom: 64px; height: 176px; border-radius: 88px;
+    background: rgba(255,255,255,.78); backdrop-filter: blur(30px); box-shadow: 0 10px 40px rgba(23,37,30,.10), inset 0 0 0 2px rgba(255,255,255,.9);
+    display: flex; justify-content: space-around; align-items: center; padding: 0 20px; }
+  .tab { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 30px; font-weight: 600; color: var(--ink3); width: 250px; padding: 16px 0; border-radius: 70px; }
+  .tab svg { width: 60px; height: 60px; }
+  .tab.on { color: #178A60; background: var(--green3); }
+
+  .seg { display: flex; background: #E9E8F0; border-radius: 40px; padding: 8px; margin: 0 6px 40px; }
+  .seg span { flex: 1; text-align: center; font-size: 38px; font-weight: 600; padding: 22px 0; border-radius: 34px; color: var(--ink2); }
+  .seg .on { background: #fff; color: var(--ink); box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .stat { padding: 42px 46px; border-radius: 52px; }
+  .stat .k { font-size: 36px; font-weight: 600; color: var(--ink2); }
+  .stat .v { font: 700 110px/1.1 "AK Display"; letter-spacing: -3px; margin-top: 10px; direction: ltr; text-align: start; }
+  .stat .v small { font-size: 54px; letter-spacing: -1px; }
+  .stat .d { font-size: 34px; font-weight: 600; color: #178A60; margin-top: 6px; }
+  .heat { padding: 46px 46px 48px; margin-top: 26px; }
+  .heat .hd { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 30px; }
+  .heat .hd b { font-family: "AK Display"; font-size: 54px; } .heat .hd span { font-size: 34px; color: var(--ink2); }
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 16px; }
+  .grid .wd { font-size: 30px; font-weight: 600; color: var(--ink3); text-align: center; padding-bottom: 6px; }
+  .leaf { aspect-ratio: 1; border-radius: 50% 6% 50% 6%; background: #EEF1EE; }
+  .l1 { background: #CFF2DF; } .l2 { background: #8FE3B6; } .l3 { background: #3FC88C; } .l4 { background: #179563; }
+  .legend { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 26px; font-size: 30px; color: var(--ink3); }
+  .legend .leaf { width: 36px; }
+  .bars2 { padding: 46px; margin-top: 26px; height: 500px; }
+  .bars2 .hd { display: flex; justify-content: space-between; } .bars2 .hd b { font-family: "AK Display"; font-size: 54px; }
+  .bars2 .hd span { font-size: 34px; color: var(--ink2); }
+  .chart { display: flex; align-items: flex-end; gap: 30px; height: 290px; margin-top: 40px; }
+  .chart div { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 14px; height: 100%; justify-content: flex-end; }
+  .chart i { width: 100%; border-radius: 22px; background: var(--lilac3); }
+  .chart i.hi { background: linear-gradient(180deg, var(--lilac), #B3A8FF); }
+  .chart span { font-size: 28px; font-weight: 600; color: var(--ink3); }
+
+  .lock { padding: 0; color: #fff;
+    background: radial-gradient(900px 900px at 80% 12%, #FFB38A 0%, rgba(255,179,138,0) 60%),
+                radial-gradient(1000px 1000px at 5% 62%, #8E7BFF 0%, rgba(142,123,255,0) 60%),
+                linear-gradient(170deg, #2A2465 0%, #4B3BA8 45%, #1E5E52 100%); }
+  .lock .status { color: #fff; }
+  .lock .date { text-align: center; font-size: 52px; font-weight: 600; margin-top: 70px; opacity: .92; }
+  .lock .time { text-align: center; font: 700 330px/1 "AK Display"; letter-spacing: -8px; margin-top: 4px; direction: ltr; }
+  .lock .stack { position: absolute; left: 40px; right: 40px; bottom: 400px; }
+  .note { display: flex; gap: 30px; padding: 34px 38px; border-radius: 58px; margin-top: 22px; color: #fff;
+    background: rgba(255,255,255,.22); backdrop-filter: blur(40px); box-shadow: inset 0 0 0 2px rgba(255,255,255,.25); }
+  .note .app { width: 96px; height: 96px; border-radius: 24px; flex: none; background: linear-gradient(150deg, #44D39A, #179563); display: grid; place-items: center; }
+  .note .t { display: flex; justify-content: space-between; font-size: 38px; font-weight: 700; }
+  .note .t span { font-weight: 500; opacity: .75; font-size: 34px; }
+  .note .b { font-size: 38px; margin-top: 6px; line-height: 1.3; opacity: .96; }
+  .lock .home { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); width: 300px; height: 12px; border-radius: 6px; background: #fff; }
+  .lock .qa { position: absolute; bottom: 120px; left: 110px; right: 110px; display: flex; justify-content: space-between; }
+  .lock .qa i { width: 130px; height: 130px; border-radius: 65px; background: rgba(255,255,255,.2); }
 </style></head>
-<body>
-  <div class="status"><span>9:41</span><span>●●● ▮</span></div>
-  <h1>{{today}}</h1>
-  <div class="sub">{{date}}</div>
-  <div class="ring">
-    <svg width="190" height="190" viewBox="0 0 190 190"><circle cx="95" cy="95" r="78" fill="none" stroke="#E5E7EB" stroke-width="22"/>
-      <circle cx="95" cy="95" r="78" fill="none" stroke="#4F46E5" stroke-width="22" stroke-linecap="round"
-        stroke-dasharray="490" stroke-dashoffset="163" transform="rotate(-90 95 95)"/></svg>
-    <div><b>{{progress}}</b><span>{{streak}}</span></div>
+<body data-screen="{{screen}}">
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="drop" viewBox="0 0 24 24"><path d="M12 2.5c3.6 4.3 6 7.7 6 11a6 6 0 0 1-12 0c0-3.3 2.4-6.7 6-11z" fill="currentColor"/></symbol>
+  <symbol id="lotus" viewBox="0 0 24 24"><path d="M12 4c2 2.2 3 4.6 3 7.2 0 2.4-1.2 4.4-3 5.8-1.8-1.4-3-3.4-3-5.8C9 8.6 10 6.2 12 4zM3 10c2.7.2 5 1.4 6.6 3.4M21 10c-2.7.2-5 1.4-6.6 3.4M3 10c0 4.6 3.8 8.5 9 8.5s9-3.9 9-8.5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="book" viewBox="0 0 24 24"><path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5v13c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z M12 6v13" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></symbol>
+  <symbol id="shoe" viewBox="0 0 24 24"><path d="M3 15.5V9l4 1.5 2-3 3 3c2 .2 3.8.6 5.6 1.4 1.7.8 3.4 2 3.4 3.6V17H3z M3 17v2h18" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/></symbol>
+  <symbol id="leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 11 5 20 4c0 9-5 15-14 15zM5 19l8-8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<section class="screen today">
+  <div class="status"><span>9:41</span><span class="r"><span class="bars"><i style="height:14px"></i><i style="height:20px"></i><i style="height:26px"></i><i style="height:32px"></i></span><span class="batt"><b></b></span></span></div>
+  <div class="top"><div><div class="eyebrow">{{date}}</div><h1>{{today}}</h1></div><div class="avatar">M</div></div>
+
+  <div class="card garden">
+    <div class="n">42<small>{{days}}</small></div>
+    <div class="l">{{streak_label}}</div>
+    <div class="msg">{{garden_msg}}</div>
+    <svg width="430" height="470" viewBox="0 0 430 470">
+      <ellipse cx="215" cy="452" rx="150" ry="22" fill="#D9CFC6" opacity=".55"/>
+      <path d="M120 360h190l-22 92H142z" fill="#E9A27E"/><rect x="108" y="338" width="214" height="36" rx="18" fill="#F3B796"/>
+      <path d="M215 345C212 260 218 190 228 120" stroke="#2C9C6B" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <path d="M220 250c-60-6-100-40-112-96 56 4 100 34 112 96z" fill="#3FC88C"/>
+      <path d="M223 200c46-20 92-14 132 22-48 20-96 16-132-22z" fill="#22B07D"/>
+      <path d="M226 140c-30-34-36-74-18-118 32 30 38 72 18 118z" fill="#8FE3B6"/>
+      <path d="M218 300c-44 0-74-22-88-58 40-4 72 16 88 58z" fill="#22B07D"/>
+      <circle cx="330" cy="120" r="10" fill="#FFC069"/><circle cx="96" cy="200" r="7" fill="#B3A8FF"/>
+    </svg>
   </div>
-  <div class="habit"><div class="dot" style="background:#E0E7FF">💧</div>
-    <div><div class="name">{{h1}}</div><div class="meta">{{h1m}}</div></div><div class="check on"></div></div>
-  <div class="habit"><div class="dot" style="background:#DCFCE7">🧘</div>
-    <div><div class="name">{{h2}}</div><div class="meta">{{h2m}}</div></div><div class="check on"></div></div>
-  <div class="habit"><div class="dot" style="background:#FEF3C7">📖</div>
-    <div><div class="name">{{h3}}</div><div class="meta">{{h3m}}</div></div><div class="check"></div></div>
-  <div class="habit"><div class="dot" style="background:#FCE7F3">🚶</div>
-    <div><div class="name">{{h4}}</div><div class="meta">{{h4m}}</div></div><div class="check"></div></div>
-  <div class="tabbar"><span class="on">{{tab1}}</span><span>{{tab2}}</span><span>{{tab3}}</span></div>
+
+  <div class="card week">
+    <div class="day"><div class="dot done"><svg width="46" height="46"><use href="#check"/></svg></div>{{d1}}</div>
+    <div class="day"><div class="dot done"><svg width="46" height="46"><use href="#check"/></svg></div>{{d2}}</div>
+    <div class="day"><div class="dot done"><svg width="46" height="46"><use href="#check"/></svg></div>{{d3}}</div>
+    <div class="day now"><div class="dot part"><span>3/4</span></div>{{d4}}</div>
+    <div class="day"><div class="dot">13</div>{{d5}}</div>
+    <div class="day"><div class="dot">14</div>{{d6}}</div>
+    <div class="day"><div class="dot">15</div>{{d7}}</div>
+  </div>
+
+  <div class="sect"><h2>{{habits_title}}</h2><span>{{left}}</span></div>
+  <div class="card habit"><div class="ico" style="background:var(--sky3);color:var(--sky)"><svg><use href="#drop"/></svg></div>
+    <div><div class="name">{{h1}}</div><div class="meta">{{h1m}}</div></div>
+    <div class="ring"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="#22B07D"/></svg><div class="ck" style="color:#fff"><svg width="46" height="46"><use href="#check"/></svg></div></div></div>
+  <div class="card habit"><div class="ico" style="background:var(--lilac3);color:var(--lilac)"><svg><use href="#lotus"/></svg></div>
+    <div><div class="name">{{h2}}</div><div class="meta">{{h2m}}</div></div>
+    <div class="ring"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="#22B07D"/></svg><div class="ck" style="color:#fff"><svg width="46" height="46"><use href="#check"/></svg></div></div></div>
+  <div class="card habit"><div class="ico" style="background:var(--peach3);color:var(--peach)"><svg><use href="#book"/></svg></div>
+    <div><div class="name">{{h3}}</div><div class="meta">{{h3m}}</div></div>
+    <div class="ring"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="38" stroke="#E3F7EC" stroke-width="10" fill="none"/><circle cx="48" cy="48" r="38" stroke="#22B07D" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="239" stroke-dashoffset="96" transform="rotate(-90 48 48)"/></svg></div></div>
+  <div class="card habit"><div class="ico" style="background:var(--green3);color:var(--green)"><svg><use href="#shoe"/></svg></div>
+    <div><div class="name">{{h4}}</div><div class="meta">{{h4m}}</div></div>
+    <div class="ring"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="38" stroke="#E6E9E6" stroke-width="10" fill="none"/></svg></div></div>
+
+  <div class="tabbar">
+    <div class="tab on"><svg><use href="#leaf"/></svg>{{tab1}}</div>
+    <div class="tab"><svg><use href="#chart"/></svg>{{tab2}}</div>
+    <div class="tab"><svg><use href="#gear"/></svg>{{tab3}}</div>
+  </div>
+</section>
+
+<section class="screen insights">
+  <div class="status"><span>9:41</span><span class="r"><span class="bars"><i style="height:14px"></i><i style="height:20px"></i><i style="height:26px"></i><i style="height:32px"></i></span><span class="batt"><b></b></span></span></div>
+  <div class="top"><div><div class="eyebrow">{{month}}</div><h1>{{insights}}</h1></div></div>
+  <div class="seg"><span>{{week}}</span><span class="on">{{month_tab}}</span><span>{{year}}</span></div>
+  <div class="stats">
+    <div class="card stat"><div class="k">{{completion}}</div><div class="v">87<small>%</small></div><div class="d">▲ 12% {{vs_last}}</div></div>
+    <div class="card stat"><div class="k">{{best_streak}}</div><div class="v">42</div><div class="d">{{days_label}}</div></div>
+  </div>
+  <div class="card heat" id="heat">
+    <div class="hd"><b>{{garden_title}}</b><span>{{month}}</span></div>
+    <div class="grid" id="grid"></div>
+    <div class="legend">{{less}} <span class="leaf"></span><span class="leaf l1"></span><span class="leaf l2"></span><span class="leaf l3"></span><span class="leaf l4"></span> {{more}}</div>
+  </div>
+  <div class="card bars2">
+    <div class="hd"><b>{{best_days}}</b><span>{{avg}}</span></div>
+    <div class="chart" id="barchart"></div>
+  </div>
+  <div class="tabbar">
+    <div class="tab"><svg><use href="#leaf"/></svg>{{tab1}}</div>
+    <div class="tab on"><svg><use href="#chart"/></svg>{{tab2}}</div>
+    <div class="tab"><svg><use href="#gear"/></svg>{{tab3}}</div>
+  </div>
+</section>
+
+<section class="screen lock">
+  <div class="status"><span></span><span class="r"><span class="bars"><i style="height:14px"></i><i style="height:20px"></i><i style="height:26px"></i><i style="height:32px"></i></span><span class="batt"><b></b></span></span></div>
+  <div class="date">{{lock_date}}</div>
+  <div class="time">7:30</div>
+  <div class="stack">
+    <div class="note"><div class="app"><svg width="56" height="56" style="color:#fff"><use href="#leaf"/></svg></div>
+      <div style="flex:1"><div class="t">Sprout <span>{{now}}</span></div><div class="b">{{n1}}</div></div></div>
+    <div class="note"><div class="app"><svg width="56" height="56" style="color:#fff"><use href="#leaf"/></svg></div>
+      <div style="flex:1"><div class="t">Sprout <span>{{ago}}</span></div><div class="b">{{n2}}</div></div></div>
+  </div>
+  <div class="qa"><i></i><i></i></div>
+  <div class="home"></div>
+</section>
+
+<script>
+  const wd = {{weekdays_json}};
+  const g = document.getElementById('grid');
+  wd.forEach(d => { const e = document.createElement('div'); e.className = 'wd'; e.textContent = d; g.appendChild(e); });
+  const levels = [3,4,2,4,3,1,0, 2,3,4,4,3,2,1, 4,4,3,2,4,3,2, 3,4,4,4,3,4,2, 4,4,3,4,0,0,0];
+  levels.forEach(l => { const e = document.createElement('div'); e.className = 'leaf' + (l ? ' l' + l : ''); g.appendChild(e); });
+  const c = document.getElementById('barchart');
+  [62, 78, 70, 92, 84, 48, 40].forEach((v, i) => {
+    const d = document.createElement('div'); const b = document.createElement('i');
+    b.style.height = Math.round(v * 2.3) + 'px'; b.style.display = 'block'; if (v > 80) b.className = 'hi';
+    const s = document.createElement('span'); s.textContent = wd[i];
+    d.appendChild(b); d.appendChild(s); c.appendChild(d); });
+</script>
 </body></html>

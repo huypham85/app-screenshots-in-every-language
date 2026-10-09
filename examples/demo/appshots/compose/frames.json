@@ -7,20 +7,111 @@
         "screen": "captures/{locale}/today.png",
         "card": {
           "from": "captures/{locale}/today.png",
-          "crop": [
-            48,
-            510,
-            1158,
-            800
-          ]
+          "crop": {
+            "*": [
+              40,
+              423,
+              1166,
+              951
+            ],
+            "ja": [
+              40,
+              435,
+              1166,
+              963
+            ],
+            "ar": [
+              40,
+              429,
+              1166,
+              957
+            ]
+          }
         }
       },
       "text": {
         "headline": "headline.01"
       },
       "style": {
-        "card_top": "2290px",
-        "card_width": "1110px"
+        "card_top": "1980px",
+        "card_width": "1130px",
+        "extra_css": ".card { transform: translateX(-50%) rotate(0deg); box-shadow: 0 0 0 10px rgba(255,255,255,.55), 0 50px 90px rgba(40,32,90,.22), 0 10px 24px rgba(40,32,90,.10); }"
+      }
+    },
+    {
+      "id": "02",
+      "template": "phone-card",
+      "images": {
+        "screen": "captures/{locale}/insights.png",
+        "card": {
+          "from": "captures/{locale}/insights.png",
+          "crop": {
+            "*": [
+              40,
+              899,
+              1166,
+              1942
+            ],
+            "ja": [
+              40,
+              945,
+              1166,
+              2024
+            ],
+            "ar": [
+              40,
+              924,
+              1166,
+              1987
+            ]
+          }
+        }
+      },
+      "text": {
+        "headline": "headline.02"
+      },
+      "style": {
+        "card_top": "1500px",
+        "card_width": "1010px",
+        "extra_css": ".card { transform: translateX(-50%) rotate(2deg); box-shadow: 0 0 0 10px rgba(255,255,255,.55), 0 50px 90px rgba(40,32,90,.22), 0 10px 24px rgba(40,32,90,.10); } .card { margin-left: 70px; } .phone { margin-left: -60px; }"
+      }
+    },
+    {
+      "id": "03",
+      "template": "phone-card",
+      "images": {
+        "screen": "captures/{locale}/lockbare.png",
+        "card": {
+          "from": "captures/{locale}/lock.png",
+          "crop": {
+            "*": [
+              36,
+              1785,
+              1170,
+              2228
+            ],
+            "ja": [
+              36,
+              1834,
+              1170,
+              2228
+            ],
+            "ar": [
+              36,
+              1834,
+              1170,
+              2228
+            ]
+          }
+        }
+      },
+      "text": {
+        "headline": "headline.03"
+      },
+      "style": {
+        "card_top": "1720px",
+        "card_width": "1190px",
+        "extra_css": ".card { transform: translateX(-50%) rotate(-1.5deg); box-shadow: 0 0 0 10px rgba(255,255,255,.55), 0 50px 90px rgba(40,32,90,.22), 0 10px 24px rgba(40,32,90,.10); } .card { background: #3B3A86; }"
       }
     }
   ]

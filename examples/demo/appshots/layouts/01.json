@@ -1,205 +1,320 @@
 {
  "source": "../source/01.png",
- "note": "Demo: headline plus every UI string in the phone and the floating card.",
+ "note": "Demo: headline, every UI string in the phone, and the floating card.",
  "headline": {
   "key": "01",
   "src_lines": [
-   "Build habits",
+   "Grow habits",
    "that *stick*"
   ],
   "line_boxes": [
    [
-    100,
-    236,
-    1190,
-    372
+    220,
+    210,
+    1080,
+    362
    ],
    [
-    100,
-    380,
-    1190,
-    530
+    300,
+    366,
+    1000,
+    506
    ]
   ],
   "erase": [
-   80,
-   220,
-   1210,
-   540
+   180,
+   190,
+   1100,
+   515
   ],
   "colors": {
    "dark": [
-    31,
-    41,
-    55
+    23,
+    37,
+    30
    ],
    "accent": [
-    79,
-    70,
-    229
-   ]
-  },
-  "sizes": [
-   152,
-   152
-  ]
- },
- "items": [
-  {
-   "src": "Today",
-   "weight": "display_bold",
-   "box": [
-    268,
-    828,
-    475,
-    922
-   ]
-  },
-  {
-   "src": "Thursday, 12 March",
-   "weight": "reg",
-   "box": [
-    268,
-    935,
-    555,
-    978
-   ]
-  },
-  {
-   "src": "2 of 4 done",
-   "weight": "bold",
-   "box": [
-    450,
-    1060,
-    705,
-    1112
-   ]
-  },
-  {
-   "src": "12-day streak",
-   "weight": "reg",
-   "box": [
-    486,
-    1112,
-    670,
-    1150
-   ]
-  },
-  {
-   "src": "Drink water",
-   "weight": "semi",
-   "box": [
-    384,
-    1252,
-    590,
-    1296
-   ],
-   "group": "names"
-  },
-  {
-   "src": "8 glasses · Morning",
-   "weight": "reg",
-   "box": [
-    384,
-    1298,
-    632,
-    1336
-   ],
-   "group": "subs"
-  },
-  {
-   "src": "Meditate",
-   "weight": "semi",
-   "box": [
-    384,
-    1394,
-    545,
-    1440
-   ],
-   "group": "names"
-  },
-  {
-   "src": "10 min · Morning",
-   "weight": "reg",
-   "box": [
-    384,
-    1442,
-    600,
-    1480
-   ],
-   "group": "subs"
-  },
-  {
-   "src": "Read",
-   "weight": "semi",
-   "box": [
-    384,
-    1537,
-    485,
-    1582
-   ],
-   "group": "names"
-  },
-  {
-   "src": "20 pages · Evening",
-   "weight": "reg",
-   "box": [
-    384,
-    1584,
-    630,
-    1622
-   ],
-   "group": "subs"
-  },
-  {
-   "src": "Walk",
-   "weight": "semi",
-   "box": [
-    384,
-    1680,
-    485,
-    1724
-   ],
-   "group": "names"
-  },
-  {
-   "src": "6,000 steps · Evening",
-   "weight": "reg",
-   "box": [
-    384,
-    1726,
-    660,
-    1766
-   ],
-   "group": "subs"
-  },
-  {
-   "src": "2 of 4 done",
-   "weight": "bold",
-   "box": [
-    360,
-    2370,
-    730,
-    2450
-   ]
-  },
-  {
-   "src": "12-day streak",
-   "weight": "reg",
-   "box": [
-    410,
-    2450,
-    680,
-    2502
+    21,
+    154,
+    105
    ]
   }
- ],
+ },
  "groups": {
+  "weekdays": {
+   "share_size": true,
+   "share_base": true
+  },
   "names": {
    "share_size": true
   },
   "subs": {
    "share_size": true
   }
- }
+ },
+ "items": [
+  {
+   "src": "Thursday, 12 March",
+   "weight": "bold",
+   "box": [
+    262,
+    818,
+    560,
+    860
+   ]
+  },
+  {
+   "src": "Today",
+   "weight": "display_bold",
+   "box": [
+    262,
+    862,
+    480,
+    940
+   ]
+  },
+  {
+   "src": "days",
+   "weight": "bold",
+   "box": [
+    456,
+    1060,
+    564,
+    1122
+   ]
+  },
+  {
+   "src": "Your longest streak yet",
+   "weight": "semi",
+   "box": [
+    292,
+    1130,
+    650,
+    1182
+   ]
+  },
+  {
+   "src": "Your garden is growing",
+   "weight": "bold",
+   "box": [
+    312,
+    1236,
+    622,
+    1277
+   ],
+   "pill": [
+    300,
+    1227,
+    632,
+    1280
+   ]
+  },
+  {
+   "src": "Mon",
+   "weight": "bold",
+   "box": [
+    298,
+    1440,
+    360,
+    1475
+   ],
+   "align": "center",
+   "group": "weekdays"
+  },
+  {
+   "src": "Tue",
+   "weight": "bold",
+   "box": [
+    406,
+    1440,
+    462,
+    1475
+   ],
+   "align": "center",
+   "group": "weekdays"
+  },
+  {
+   "src": "Wed",
+   "weight": "bold",
+   "box": [
+    509,
+    1440,
+    570,
+    1475
+   ],
+   "align": "center",
+   "group": "weekdays"
+  },
+  {
+   "src": "Thu",
+   "weight": "bold",
+   "box": [
+    617,
+    1440,
+    673,
+    1475
+   ],
+   "align": "center",
+   "group": "weekdays"
+  },
+  {
+   "src": "Fri",
+   "weight": "bold",
+   "box": [
+    729,
+    1440,
+    772,
+    1475
+   ],
+   "align": "center",
+   "group": "weekdays"
+  },
+  {
+   "src": "Sat",
+   "weight": "bold",
+   "box": [
+    831,
+    1440,
+    881,
+    1475
+   ],
+   "align": "center",
+   "group": "weekdays"
+  },
+  {
+   "src": "Sun",
+   "weight": "bold",
+   "box": [
+    933,
+    1440,
+    989,
+    1475
+   ],
+   "align": "center",
+   "group": "weekdays"
+  },
+  {
+   "src": "Habits",
+   "weight": "display_bold",
+   "box": [
+    264,
+    1536,
+    400,
+    1588
+   ]
+  },
+  {
+   "src": "1 left",
+   "weight": "bold",
+   "box": [
+    948,
+    1544,
+    1026,
+    1586
+   ],
+   "align": "right"
+  },
+  {
+   "src": "Drink water",
+   "weight": "bold",
+   "box": [
+    382,
+    1620,
+    584,
+    1668
+   ],
+   "group": "names"
+  },
+  {
+   "src": "8 of 8 glasses",
+   "weight": "med",
+   "box": [
+    382,
+    1666,
+    562,
+    1704
+   ],
+   "group": "subs"
+  },
+  {
+   "src": "Meditate",
+   "weight": "bold",
+   "box": [
+    382,
+    1760,
+    540,
+    1806
+   ],
+   "group": "names"
+  },
+  {
+   "src": "10 min · Morning",
+   "weight": "med",
+   "box": [
+    382,
+    1804,
+    592,
+    1844
+   ],
+   "group": "subs"
+  },
+  {
+   "src": "Read",
+   "weight": "bold",
+   "box": [
+    382,
+    1900,
+    478,
+    1944
+   ],
+   "group": "names"
+  },
+  {
+   "src": "12 of 20 pages",
+   "weight": "med",
+   "box": [
+    382,
+    1942,
+    570,
+    1982
+   ],
+   "group": "subs"
+  },
+  {
+   "src": "days",
+   "weight": "display_bold",
+   "box": [
+    374,
+    2145,
+    530,
+    2232
+   ]
+  },
+  {
+   "src": "Your longest streak yet",
+   "weight": "semi",
+   "box": [
+    130,
+    2238,
+    660,
+    2306
+   ]
+  },
+  {
+   "src": "Your garden is growing",
+   "weight": "semi",
+   "box": [
+    160,
+    2388,
+    612,
+    2446
+   ],
+   "pill": [
+    146,
+    2378,
+    626,
+    2454
+   ]
+  }
+ ]
 }

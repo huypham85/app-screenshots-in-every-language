@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- README / social hero: a fan of finished screenshots in several languages. Rendered with scripts/render.sh at 2400x1350. -->
+<html><head><meta charset="utf-8"><title>App screenshots in every language</title>
+<style>
+  @font-face { font-family: "D"; font-weight: 700; src: local("SF Pro Display Bold"), url("../../../fonts/InterDisplay-Bold.ttf"); }
+  @font-face { font-family: "T"; font-weight: 500; src: local("SF Pro Text Medium"), url("../../../fonts/Inter-Medium.ttf"); }
+  @font-face { font-family: "T"; font-weight: 600; src: local("SF Pro Text Semibold"), url("../../../fonts/Inter-SemiBold.ttf"); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 2400px; height: 1350px; overflow: hidden; }
+  body { position: relative; color: #F4F2EC; font-family: "T", sans-serif;
+    background: radial-gradient(1200px 800px at 85% 110%, rgba(139,124,246,.38), rgba(139,124,246,0) 70%),
+                radial-gradient(900px 700px at 8% -10%, rgba(34,176,125,.30), rgba(34,176,125,0) 70%),
+                #13201A; }
+  .copy { position: absolute; left: 130px; top: 150px; width: 820px; }
+  .kicker { font: 600 30px "T"; letter-spacing: 4px; text-transform: uppercase; color: #8FE3B6; }
+  h1 { font: 700 112px/1.0 "D"; letter-spacing: -3.5px; margin-top: 30px; }
+  h1 em { font-style: normal; color: #8FE3B6; }
+  p { font: 500 38px/1.45 "T"; color: rgba(244,242,236,.72); margin-top: 40px; max-width: 760px; }
+  .langs { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 48px; }
+  .langs span { font: 600 28px "T"; padding: 12px 24px; border-radius: 40px; background: rgba(255,255,255,.08);
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.12); }
+  .cmd { position: absolute; left: 130px; bottom: 120px; font: 500 26px ui-monospace, Menlo, monospace; color: rgba(244,242,236,.78);
+    background: rgba(0,0,0,.28); padding: 22px 30px; border-radius: 22px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.08); }
+  .cmd b { color: #8FE3B6; font-weight: 500; }
+  .fan { position: absolute; left: 1010px; top: 70px; width: 1350px; height: 1220px; }
+  .shot { position: absolute; width: 420px; border-radius: 46px; overflow: hidden;
+    box-shadow: 0 50px 90px rgba(0,0,0,.45), 0 0 0 3px rgba(255,255,255,.10); }
+  .shot img { display: block; width: 100%; }
+  .tag { position: absolute; z-index: 9; font: 600 26px "T"; color: #13201A; background: #F4F2EC; padding: 8px 18px; border-radius: 30px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.3); }
+</style></head>
+<body>
+  <div class="copy">
+    <div class="kicker">Claude Code plugin · iOS</div>
+    <h1>Your App Store screenshots, <em>in every language</em></h1>
+    <p>Built from real Simulator captures. Translated pixel for pixel, with your app's own words.</p>
+    <div class="langs"><span>English</span><span>Tiếng Việt</span><span>日本語</span><span>العربية</span><span>Deutsch</span><span>Français</span><span>+ any</span></div>
+  </div>
+  <div class="cmd"><b>github.com/</b>huypham85/app-screenshots-in-every-language</div>
+
+  <div class="fan">
+    <div class="shot" style="left:0;    top:250px; transform: rotate(-9deg);  z-index:1"><img src="../appshots/out/ar/01.png"></div>
+    <div class="shot" style="left:250px; top:120px; transform: rotate(-4deg); z-index:2"><img src="../appshots/out/ja/02.png"></div>
+    <div class="shot" style="left:510px; top:40px;  transform: rotate(0deg);  z-index:4"><img src="../appshots/source/01.png"></div>
+    <div class="shot" style="left:770px; top:120px; transform: rotate(4deg);  z-index:3"><img src="../appshots/out/vi/03.png"></div>
+    <div class="shot" style="left:1010px; top:250px; transform: rotate(9deg); z-index:2"><img src="../appshots/out/de/01.png"></div>
+    <div class="tag" style="left:70px;   top:205px;">AR</div>
+    <div class="tag" style="left:320px;  top:80px;">JA</div>
+    <div class="tag" style="left:690px;  top:0px;">EN</div>
+    <div class="tag" style="left:950px;  top:80px;">VI</div>
+    <div class="tag" style="left:1200px; top:205px;">DE</div>
+  </div>
+</body></html>

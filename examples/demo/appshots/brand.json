@@ -7,36 +7,37 @@
   "background": {
     "stops": [
       [
-        "#EEF2FF",
+        "#F3F0FF",
         0
       ],
       [
-        "#EEF2FF",
-        0.6
+        "#EEF7F2",
+        0.45
       ],
       [
-        "#C7D2FE",
-        0.84
-      ],
-      [
-        "#A5B4FC",
+        "#FFF0E7",
         1
       ]
     ]
   },
   "headline": {
-    "color": "#1F2937",
-    "accent": "#4F46E5",
-    "size": 160,
-    "top": 230
+    "color": "#17251E",
+    "accent": "#159A69",
+    "size": 156,
+    "top": 210,
+    "line_height": 0.98,
+    "letter_spacing": -4,
+    "max_width": 1170
   },
   "phone": {
-    "width": 860,
-    "top": 640
+    "width": 880,
+    "top": 640,
+    "shadow": "rgba(40, 32, 90, .26)"
   },
   "card": {
-    "stroke": "#818CF8",
-    "radius": 48,
+    "stroke": "rgba(255,255,255,.95)",
+    "radius": 64,
     "background": "#FFFFFF"
-  }
+  },
+  "decor_html": "<div style=\"position:absolute;inset:0;overflow:hidden;pointer-events:none\">\n  <div style=\"position:absolute;width:900px;height:900px;left:-380px;top:-260px;border-radius:50%;background:radial-gradient(circle,#C9F2DD 0%,rgba(201,242,221,0) 68%)\"></div>\n  <div style=\"position:absolute;width:1000px;height:1000px;right:-460px;top:900px;border-radius:50%;background:radial-gradient(circle,#D9D1FF 0%,rgba(217,209,255,0) 68%)\"></div>\n  <div style=\"position:absolute;width:1100px;height:1100px;left:-300px;bottom:-520px;border-radius:50%;background:radial-gradient(circle,#FFD3BC 0%,rgba(255,211,188,0) 66%)\"></div>\n  <svg style=\"position:absolute;right:70px;top:120px;transform:rotate(18deg)\" width=\"120\" height=\"120\" viewBox=\"0 0 24 24\"><path d=\"M5 19C5 10 11 5 20 4c0 9-5 15-14 15zM5 19l8-8\" stroke=\"#22B07D\" stroke-opacity=\".55\" stroke-width=\"1.6\" fill=\"#22B07D\" fill-opacity=\".14\" stroke-linecap=\"round\"/></svg>\n  <svg style=\"position:absolute;left:60px;top:560px;transform:rotate(-24deg)\" width=\"70\" height=\"70\" viewBox=\"0 0 24 24\"><path d=\"M5 19C5 10 11 5 20 4c0 9-5 15-14 15z\" fill=\"#8B7CF6\" fill-opacity=\".22\"/></svg>\n</div>"
 }

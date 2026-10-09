@@ -12,7 +12,22 @@ Two skills for [Claude Code](https://claude.com/claude-code):
 Both pull UI strings from your app's own String Catalogs (`.xcstrings`), so the words in the
 screenshots match the words in the app.
 
-![demo](examples/demo/preview.png)
+![App screenshots in every language](docs/hero.jpg)
+
+## What you get
+
+`make-app-screenshots` built these three frames from captures of a demo app, then rebuilt them in
+Vietnamese, Japanese and Arabic (right-to-left):
+
+![Three frames in four languages](docs/gallery.jpg)
+
+`localize-app-screenshots` took the finished English PNG and translated every string in it, the
+headline, the phone screen and the floating card, keeping everything else pixel for pixel:
+
+![English source and German and French versions](docs/localize.jpg)
+
+The demo app ("Sprout") is fictional and drawn in HTML so the example runs anywhere; with your app,
+the captures come from the iOS Simulator.
 
 ## Install
 
@@ -47,7 +62,7 @@ localize:  flat PNG + layout.json (where each text is) + strings/<locale>.json â
 Your files live in your repo under `appshots/` (`brand.json`, `compose/`, `layouts/`, `strings/`,
 `source/`; `out/` is generated). Everything is plain JSON and HTML, so you can tweak anything.
 See [`references/`](references) for the formats and [`examples/demo`](examples/demo) for a
-complete example (a fictional habit tracker, English â†’ Vietnamese, Japanese, Arabic, German).
+complete example (a fictional habit tracker: three frames in English, Vietnamese, Japanese and Arabic, plus German and French made by localize).
 
 ## Limits (v0.1)
 

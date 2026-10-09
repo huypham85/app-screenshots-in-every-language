@@ -2,7 +2,7 @@
 """Render the fictional app's 'simulator captures' for each locale (example only).
 
   python examples/demo/mock/make_captures.py
-Writes examples/demo/appshots/captures/<locale>/today.png (1206x2622, iPhone 17 Pro).
+Writes examples/demo/appshots/captures/<locale>/{today,insights,lock,lockbare}.png (1206x2622, iPhone 17 Pro).
 """
 import json, os, re, subprocess, sys
 
@@ -14,10 +14,14 @@ from compose import font_faces  # noqa: E402
 UI = json.load(open(os.path.join(HERE, 'ui.json'), encoding='utf-8'))
 tpl = open(os.path.join(HERE, 'app.html'), encoding='utf-8').read()
 for loc, s in UI.items():
-    page = os.path.join(HERE, f'_{loc}.html')
-    vals = dict(s, lang=loc, dir='rtl' if loc == 'ar' else 'ltr', font_faces=font_faces())
-    with open(page, 'w', encoding='utf-8') as fh:
-        fh.write(re.sub(r'\{\{(\w+)\}\}', lambda m: vals.get(m.group(1), ''), tpl))
-    out = os.path.join(ROOT, 'examples', 'demo', 'appshots', 'captures', loc, 'today.png')
-    subprocess.run(['bash', os.path.join(ROOT, 'scripts', 'render.sh'), page, out, '1206', '2622'], check=True)
-    os.remove(page)
+    for screen in ('today', 'insights', 'lock', 'lockbare'):
+        page = os.path.join(HERE, f'_{loc}_{screen}.html')
+        vals = dict(s, lang=loc, dir='rtl' if loc == 'ar' else 'ltr', font_faces=font_faces(), screen=screen,
+                    weekdays_json=json.dumps(s['weekdays'], ensure_ascii=False))
+        with open(page, 'w', encoding='utf-8') as fh:
+            fh.write(re.sub(r'\{\{(\w+)\}\}', lambda m: str(vals.get(m.group(1), '')), tpl))
+        out = os.path.join(ROOT, 'examples', 'demo', 'appshots', 'captures', loc, f'{screen}.png')
+        subprocess.run(['bash', os.path.join(ROOT, 'scripts', 'render.sh'), page, out, '1206', '2622'], check=True,
+                       stdout=subprocess.DEVNULL)
+        os.remove(page)
+    print(loc, 'captured')

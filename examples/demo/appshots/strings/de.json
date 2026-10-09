@@ -1,18 +1,26 @@
 {
  "locale": "de",
  "strings": {
-  "Today": "Heute",
   "Thursday, 12 March": "Donnerstag, 12. März",
-  "2 of 4 done": "2 von 4 erledigt",
-  "12-day streak": "12 Tage in Folge",
+  "Today": "Heute",
+  "days": "Tage",
+  "Your longest streak yet": "Deine längste Serie bisher",
+  "Your garden is growing": "Dein Garten wächst",
+  "Mon": "Mo",
+  "Tue": "Di",
+  "Wed": "Mi",
+  "Thu": "Do",
+  "Fri": "Fr",
+  "Sat": "Sa",
+  "Sun": "So",
+  "Habits": "Gewohnheiten",
+  "1 left": "1 offen",
   "Drink water": "Wasser trinken",
-  "8 glasses · Morning": "8 Gläser · Morgens",
+  "8 of 8 glasses": "8 von 8 Gläsern",
   "Meditate": "Meditieren",
   "10 min · Morning": "10 Min. · Morgens",
   "Read": "Lesen",
-  "20 pages · Evening": "20 Seiten · Abends",
-  "Walk": "Spazieren",
-  "6,000 steps · Evening": "6.000 Schritte · Abends"
+  "12 of 20 pages": "12 von 20 Seiten"
  },
  "headlines": {
   "01": "Gewohnheiten,\ndie *bleiben*"
