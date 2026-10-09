@@ -1,0 +1,43 @@
+/* appshotkit base styles. Look comes from CSS variables that compose.py writes from brand.json. */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: var(--canvas-w); height: var(--canvas-h); overflow: hidden; }
+body { position: relative; background: var(--bg); font-family: var(--font-text), sans-serif;
+  -webkit-font-smoothing: antialiased; }
+body.overlay { background: transparent; }
+
+.headline { position: absolute; left: 0; width: var(--canvas-w); top: var(--headline-top); text-align: center;
+  font-family: var(--font-display), sans-serif; font-weight: 700; color: var(--ink);
+  font-size: var(--headline-size); line-height: var(--headline-lh); letter-spacing: var(--headline-ls); }
+.headline .line { display: block; white-space: nowrap; }
+.accent { color: var(--accent); }
+.big { font-size: 1.25em; }
+
+/* Device frame drawn in CSS (no Apple artwork). Swap for an official bezel if you prefer. */
+.phone { position: absolute; left: 50%; transform: translateX(-50%); top: var(--phone-top); width: var(--phone-w);
+  border-radius: calc(var(--phone-w) * .175); padding: 9px;
+  background: linear-gradient(135deg, #5B5D60 0%, #2C2D2F 18%, #46484B 50%, #232425 82%, #55575A 100%);
+  box-shadow: 0 40px 90px var(--phone-shadow), 0 8px 18px rgba(0, 0, 0, .18); }
+.phone .bezel { border-radius: calc(var(--phone-w) * .164); padding: 17px; background: #050505; }
+.phone .screen { position: relative; border-radius: calc(var(--phone-w) * .144); overflow: hidden; background: #F2F2F7; }
+.phone .screen img { display: block; width: 100%; }
+.phone .island { position: absolute; left: 50%; transform: translateX(-50%); top: 22px;
+  width: 29%; height: 74px; border-radius: 37px; background: #000; z-index: 5; }
+
+/* Floating card: a crop of a second capture, lifted off the phone. */
+.card { position: absolute; left: 50%; transform: translateX(-50%); background: var(--card-bg);
+  border: 5px solid var(--card-stroke); border-radius: var(--card-radius); overflow: hidden;
+  box-shadow: 0 0 0 9px rgba(255, 255, 255, .85), 0 30px 60px rgba(0, 0, 0, .18), 0 6px 14px rgba(0, 0, 0, .08); }
+.card img { display: block; width: 100%; }
+
+.caption { position: absolute; left: 0; width: var(--canvas-w); text-align: center;
+  font-family: var(--font-text), sans-serif; font-weight: 600; color: var(--ink); }
+
+/* Trust badges (laurels). Laurel PNGs are generated on the user's Mac with symbol.swift. */
+.badges { position: absolute; left: 0; width: var(--canvas-w); display: flex; justify-content: center; gap: 70px; }
+.badge { display: flex; align-items: center; gap: 6px; color: var(--ink); }
+.badge img.laurel { height: 150px; opacity: .55; }
+.badge .text { display: flex; flex-direction: column; align-items: center; gap: 4px; font-weight: 600;
+  font-size: 44px; line-height: 1.12; white-space: nowrap; }
+.badge .stars { color: #FFC81E; letter-spacing: 4px; font-size: 40px; }
+
+[dir="rtl"] .headline, [dir="rtl"] .caption { direction: rtl; }

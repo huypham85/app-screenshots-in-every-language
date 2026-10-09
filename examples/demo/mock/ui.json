@@ -1,0 +1,18 @@
+{
+ "en": {"today": "Today", "date": "Thursday, 12 March", "progress": "2 of 4 done", "streak": "🔥 12-day streak",
+        "h1": "Drink water", "h1m": "8 glasses · Morning", "h2": "Meditate", "h2m": "10 min · Morning",
+        "h3": "Read", "h3m": "20 pages · Evening", "h4": "Walk", "h4m": "6,000 steps · Evening",
+        "tab1": "Today", "tab2": "Habits", "tab3": "Stats"},
+ "vi": {"today": "Hôm nay", "date": "Thứ Năm, 12 tháng 3", "progress": "Xong 2/4", "streak": "🔥 Chuỗi 12 ngày",
+        "h1": "Uống nước", "h1m": "8 ly · Buổi sáng", "h2": "Thiền", "h2m": "10 phút · Buổi sáng",
+        "h3": "Đọc sách", "h3m": "20 trang · Buổi tối", "h4": "Đi bộ", "h4m": "6.000 bước · Buổi tối",
+        "tab1": "Hôm nay", "tab2": "Thói quen", "tab3": "Thống kê"},
+ "ja": {"today": "今日", "date": "3月12日（木）", "progress": "4件中2件完了", "streak": "🔥 12日連続",
+        "h1": "水を飲む", "h1m": "8杯・朝", "h2": "瞑想", "h2m": "10分・朝",
+        "h3": "読書", "h3m": "20ページ・夜", "h4": "散歩", "h4m": "6,000歩・夜",
+        "tab1": "今日", "tab2": "習慣", "tab3": "統計"},
+ "ar": {"today": "اليوم", "date": "الخميس، 12 مارس", "progress": "تم 2 من 4", "streak": "🔥 سلسلة 12 يومًا",
+        "h1": "شرب الماء", "h1m": "8 أكواب · صباحًا", "h2": "التأمل", "h2m": "10 دقائق · صباحًا",
+        "h3": "القراءة", "h3m": "20 صفحة · مساءً", "h4": "المشي", "h4m": "6,000 خطوة · مساءً",
+        "tab1": "اليوم", "tab2": "العادات", "tab3": "الإحصاءات"}
+}

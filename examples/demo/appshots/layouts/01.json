@@ -1,0 +1,205 @@
+{
+ "source": "../source/01.png",
+ "note": "Demo: headline plus every UI string in the phone and the floating card.",
+ "headline": {
+  "key": "01",
+  "src_lines": [
+   "Build habits",
+   "that *stick*"
+  ],
+  "line_boxes": [
+   [
+    100,
+    236,
+    1190,
+    372
+   ],
+   [
+    100,
+    380,
+    1190,
+    530
+   ]
+  ],
+  "erase": [
+   80,
+   220,
+   1210,
+   540
+  ],
+  "colors": {
+   "dark": [
+    31,
+    41,
+    55
+   ],
+   "accent": [
+    79,
+    70,
+    229
+   ]
+  },
+  "sizes": [
+   152,
+   152
+  ]
+ },
+ "items": [
+  {
+   "src": "Today",
+   "weight": "display_bold",
+   "box": [
+    268,
+    828,
+    475,
+    922
+   ]
+  },
+  {
+   "src": "Thursday, 12 March",
+   "weight": "reg",
+   "box": [
+    268,
+    935,
+    555,
+    978
+   ]
+  },
+  {
+   "src": "2 of 4 done",
+   "weight": "bold",
+   "box": [
+    450,
+    1060,
+    705,
+    1112
+   ]
+  },
+  {
+   "src": "12-day streak",
+   "weight": "reg",
+   "box": [
+    486,
+    1112,
+    670,
+    1150
+   ]
+  },
+  {
+   "src": "Drink water",
+   "weight": "semi",
+   "box": [
+    384,
+    1252,
+    590,
+    1296
+   ],
+   "group": "names"
+  },
+  {
+   "src": "8 glasses · Morning",
+   "weight": "reg",
+   "box": [
+    384,
+    1298,
+    632,
+    1336
+   ],
+   "group": "subs"
+  },
+  {
+   "src": "Meditate",
+   "weight": "semi",
+   "box": [
+    384,
+    1394,
+    545,
+    1440
+   ],
+   "group": "names"
+  },
+  {
+   "src": "10 min · Morning",
+   "weight": "reg",
+   "box": [
+    384,
+    1442,
+    600,
+    1480
+   ],
+   "group": "subs"
+  },
+  {
+   "src": "Read",
+   "weight": "semi",
+   "box": [
+    384,
+    1537,
+    485,
+    1582
+   ],
+   "group": "names"
+  },
+  {
+   "src": "20 pages · Evening",
+   "weight": "reg",
+   "box": [
+    384,
+    1584,
+    630,
+    1622
+   ],
+   "group": "subs"
+  },
+  {
+   "src": "Walk",
+   "weight": "semi",
+   "box": [
+    384,
+    1680,
+    485,
+    1724
+   ],
+   "group": "names"
+  },
+  {
+   "src": "6,000 steps · Evening",
+   "weight": "reg",
+   "box": [
+    384,
+    1726,
+    660,
+    1766
+   ],
+   "group": "subs"
+  },
+  {
+   "src": "2 of 4 done",
+   "weight": "bold",
+   "box": [
+    360,
+    2370,
+    730,
+    2450
+   ]
+  },
+  {
+   "src": "12-day streak",
+   "weight": "reg",
+   "box": [
+    410,
+    2450,
+    680,
+    2502
+   ]
+  }
+ ],
+ "groups": {
+  "names": {
+   "share_size": true
+  },
+  "subs": {
+   "share_size": true
+  }
+ }
+}

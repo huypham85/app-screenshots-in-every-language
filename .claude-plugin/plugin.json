@@ -1,0 +1,10 @@
+{
+  "name": "appshotkit",
+  "version": "0.1.0",
+  "description": "Make App Store screenshots from real simulator captures and localize them into every language, pixel-exact. Two skills: compose and localize.",
+  "author": { "name": "Huy Pham", "url": "https://github.com/huypham85" },
+  "homepage": "https://github.com/huypham85/appshotkit",
+  "repository": "https://github.com/huypham85/appshotkit",
+  "license": "MIT",
+  "keywords": ["app-store", "screenshots", "localization", "ios", "aso"]
+}

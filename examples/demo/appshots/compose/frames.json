@@ -1,0 +1,27 @@
+{
+  "frames": [
+    {
+      "id": "01",
+      "template": "phone-card",
+      "images": {
+        "screen": "captures/{locale}/today.png",
+        "card": {
+          "from": "captures/{locale}/today.png",
+          "crop": [
+            48,
+            510,
+            1158,
+            800
+          ]
+        }
+      },
+      "text": {
+        "headline": "headline.01"
+      },
+      "style": {
+        "card_top": "2290px",
+        "card_width": "1110px"
+      }
+    }
+  ]
+}

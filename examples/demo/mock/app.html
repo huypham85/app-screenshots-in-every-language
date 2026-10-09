@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- A fictional habit tracker ("Sprout") drawn in HTML so the example needs no Xcode project.
+     In real use, captures come from the iOS Simulator (see skills/appshotkit-compose). -->
+<html lang="{{lang}}" dir="{{dir}}"><head><meta charset="utf-8"><title>Sprout mock</title>
+<style>
+  {{font_faces}}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1206px; height: 2622px; overflow: hidden; }
+  body { background: #F2F2F7; font-family: "AK Text", -apple-system, sans-serif; color: #111; padding: 0 48px; }
+  .status { height: 160px; display: flex; justify-content: space-between; align-items: center; padding: 30px 50px 0;
+    font-weight: 600; font-size: 50px; direction: ltr; }
+  h1 { font-family: "AK Display"; font-size: 102px; font-weight: 700; margin: 90px 0 30px; letter-spacing: -1px; height: 124px; line-height: 124px; }
+  .sub { font-size: 44px; color: #6b6b70; margin-bottom: 50px; height: 56px; line-height: 56px; }
+  .ring { height: 290px; display: flex; align-items: center; gap: 40px; background: #fff; border-radius: 44px; padding: 44px; margin-bottom: 40px; }
+  .ring svg { flex: none; }
+  .ring b { display: block; font-size: 64px; } .ring span { font-size: 40px; color: #6b6b70; }
+  .habit { display: flex; align-items: center; gap: 34px; background: #fff; border-radius: 40px; padding: 38px 44px; margin-bottom: 26px; }
+  .dot { width: 96px; height: 96px; border-radius: 30px; display: grid; place-items: center; font-size: 52px; flex: none; }
+  .habit .name { font-size: 50px; font-weight: 600; } .habit .meta { font-size: 38px; color: #6b6b70; margin-top: 6px; }
+  .check { margin-inline-start: auto; width: 78px; height: 78px; border-radius: 39px; border: 6px solid #C7C7CC; flex: none; }
+  .check.on { background: #4F46E5; border-color: #4F46E5; }
+  .tabbar { position: absolute; left: 48px; right: 48px; bottom: 60px; height: 170px; background: rgba(255,255,255,.9);
+    border-radius: 85px; display: flex; justify-content: space-around; align-items: center; font-size: 34px; font-weight: 600; color: #8e8e93; }
+  .tabbar .on { color: #4F46E5; }
+</style></head>
+<body>
+  <div class="status"><span>9:41</span><span>●●● ▮</span></div>
+  <h1>{{today}}</h1>
+  <div class="sub">{{date}}</div>
+  <div class="ring">
+    <svg width="190" height="190" viewBox="0 0 190 190"><circle cx="95" cy="95" r="78" fill="none" stroke="#E5E7EB" stroke-width="22"/>
+      <circle cx="95" cy="95" r="78" fill="none" stroke="#4F46E5" stroke-width="22" stroke-linecap="round"
+        stroke-dasharray="490" stroke-dashoffset="163" transform="rotate(-90 95 95)"/></svg>
+    <div><b>{{progress}}</b><span>{{streak}}</span></div>
+  </div>
+  <div class="habit"><div class="dot" style="background:#E0E7FF">💧</div>
+    <div><div class="name">{{h1}}</div><div class="meta">{{h1m}}</div></div><div class="check on"></div></div>
+  <div class="habit"><div class="dot" style="background:#DCFCE7">🧘</div>
+    <div><div class="name">{{h2}}</div><div class="meta">{{h2m}}</div></div><div class="check on"></div></div>
+  <div class="habit"><div class="dot" style="background:#FEF3C7">📖</div>
+    <div><div class="name">{{h3}}</div><div class="meta">{{h3m}}</div></div><div class="check"></div></div>
+  <div class="habit"><div class="dot" style="background:#FCE7F3">🚶</div>
+    <div><div class="name">{{h4}}</div><div class="meta">{{h4m}}</div></div><div class="check"></div></div>
+  <div class="tabbar"><span class="on">{{tab1}}</span><span>{{tab2}}</span><span>{{tab3}}</span></div>
+</body></html>

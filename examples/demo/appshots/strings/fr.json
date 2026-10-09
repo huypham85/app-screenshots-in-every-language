@@ -1,0 +1,20 @@
+{
+ "locale": "fr",
+ "strings": {
+  "Today": "Aujourd’hui",
+  "Thursday, 12 March": "jeudi 12 mars",
+  "2 of 4 done": "2 sur 4 faites",
+  "12-day streak": "Série de 12 jours",
+  "Drink water": "Boire de l’eau",
+  "8 glasses · Morning": "8 verres · Matin",
+  "Meditate": "Méditer",
+  "10 min · Morning": "10 min · Matin",
+  "Read": "Lire",
+  "20 pages · Evening": "20 pages · Soir",
+  "Walk": "Marcher",
+  "6,000 steps · Evening": "6 000 pas · Soir"
+ },
+ "headlines": {
+  "01": "Des habitudes\nqui *durent*"
+ }
+}

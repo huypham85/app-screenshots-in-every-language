@@ -1,0 +1,27 @@
+<!doctype html>
+<!-- appshotkit template: headline + phone + floating card cut from a second capture. -->
+<html lang="{{lang}}" dir="{{dir}}"><head><meta charset="utf-8"><title>{{title}}</title>
+<link rel="stylesheet" href="base.css">
+<style>{{font_faces}}
+:root { {{css_vars}} }
+.card { top: {{card_top}}; width: {{card_width}}; }
+{{extra_css}}</style></head>
+<body>
+  {{decor}}
+  <div class="headline">{{headline}}</div>
+  <div class="phone"><div class="bezel"><div class="screen">
+    <img src="{{screen}}"><div class="island"></div>
+  </div></div></div>
+  <div class="card"><img src="{{card}}"></div>
+<script>
+/* Shrink any line wider than its box (long translations), after fonts load. */
+document.fonts.ready.then(() => {
+  document.querySelectorAll('.fit').forEach(el => {
+    const max = +el.dataset.maxw; let fs = parseFloat(getComputedStyle(el).fontSize);
+    el.style.display = 'inline-block'; el.style.whiteSpace = 'nowrap';
+    while (el.scrollWidth > max && fs > 10) { fs -= 1; el.style.fontSize = fs + 'px'; }
+    el.style.display = '';
+  });
+});
+</script>
+</body></html>

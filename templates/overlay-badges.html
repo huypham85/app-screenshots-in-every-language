@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- appshotkit template: transparent overlay with two laurel badges, composited onto an
+     existing screenshot (e.g. the first frame). laurel_l/laurel_r come from symbol.swift. -->
+<html lang="{{lang}}" dir="{{dir}}"><head><meta charset="utf-8"><title>{{title}}</title>
+<link rel="stylesheet" href="base.css">
+<style>{{font_faces}}
+:root { {{css_vars}} }
+.badges { top: {{badges_top}}; }
+{{extra_css}}</style></head>
+<body class="overlay">
+  <div class="badges">
+    <div class="badge"><img class="laurel" src="{{laurel_l}}">
+      <div class="text"><div class="stars">★★★★★</div><div>{{badge_left}}</div></div>
+      <img class="laurel" src="{{laurel_r}}"></div>
+    <div class="badge"><img class="laurel" src="{{laurel_l}}">
+      <div class="text">{{badge_right}}</div>
+      <img class="laurel" src="{{laurel_r}}"></div>
+  </div>
+<script>
+/* Shrink any line wider than its box (long translations), after fonts load. */
+document.fonts.ready.then(() => {
+  document.querySelectorAll('.fit').forEach(el => {
+    const max = +el.dataset.maxw; let fs = parseFloat(getComputedStyle(el).fontSize);
+    el.style.display = 'inline-block'; el.style.whiteSpace = 'nowrap';
+    while (el.scrollWidth > max && fs > 10) { fs -= 1; el.style.fontSize = fs + 'px'; }
+    el.style.display = '';
+  });
+});
+</script>
+</body></html>

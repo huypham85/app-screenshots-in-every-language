@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/
+*.pyc
+examples/demo/appshots/compose/build/
+examples/demo/appshots/out/_roundtrip/

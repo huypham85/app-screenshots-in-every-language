@@ -1,0 +1,42 @@
+{
+  "canvas": [
+    1290,
+    2796
+  ],
+  "base_locale": "en",
+  "background": {
+    "stops": [
+      [
+        "#EEF2FF",
+        0
+      ],
+      [
+        "#EEF2FF",
+        0.6
+      ],
+      [
+        "#C7D2FE",
+        0.84
+      ],
+      [
+        "#A5B4FC",
+        1
+      ]
+    ]
+  },
+  "headline": {
+    "color": "#1F2937",
+    "accent": "#4F46E5",
+    "size": 160,
+    "top": 230
+  },
+  "phone": {
+    "width": 860,
+    "top": 640
+  },
+  "card": {
+    "stroke": "#818CF8",
+    "radius": 48,
+    "background": "#FFFFFF"
+  }
+}
