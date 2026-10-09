@@ -7,7 +7,7 @@ Pipeline per screenshot:
   4. redraw translated text at the same baseline/alignment/colour/weight
   5. headline: erase on gradient via smooth surface fit, redraw with accent words
 
-Part of appshotkit (MIT). Layout (per screenshot, locale-independent) and strings (per locale, shared by all
+Part of app-screenshots-in-every-language (MIT). Layout (per screenshot, locale-independent) and strings (per locale, shared by all
 screenshots) are JSON — see references/layout-format.md.
 
 Beyond the basics, items support: right alignment, right-anchored pills, pushing the

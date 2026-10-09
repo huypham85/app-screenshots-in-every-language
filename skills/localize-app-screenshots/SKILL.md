@@ -1,16 +1,16 @@
 ---
-name: appshotkit-localize
-description: Translate the TEXT of existing App Store screenshot PNGs (iPhone 6.9", e.g. exported from Figma or made by a designer) into other languages while keeping everything else pixel-identical — erase each text, redraw the translation with matched font, size, colour and baseline, resize tags and pills, keep two-colour headlines, handle CJK, Arabic (RTL) and Devanagari. Use whenever someone wants their App Store screenshots in another language ("localize my screenshots", "translate screenshots to Japanese/German", "make store images for every locale", "only change the text, keep the design"), wants to add a screenshot to a localized set, or rebuild after copy changes. For building a NEW screenshot from simulator captures use appshotkit-compose instead.
+name: localize-app-screenshots
+description: Translate the TEXT of existing App Store screenshot PNGs (iPhone 6.9", e.g. exported from Figma or made by a designer) into other languages while keeping everything else pixel-identical — erase each text, redraw the translation with matched font, size, colour and baseline, resize tags and pills, keep two-colour headlines, handle CJK, Arabic (RTL) and Devanagari. Use whenever someone wants their App Store screenshots in another language ("localize my screenshots", "translate screenshots to Japanese/German", "make store images for every locale", "only change the text, keep the design"), wants to add a screenshot to a localized set, or rebuild after copy changes. For building a NEW screenshot from simulator captures use make-app-screenshots instead.
 ---
 
-# appshotkit-localize
+# localize-app-screenshots
 
 Turns flat screenshot PNGs (no design source) into localized PNGs. Only text changes. Everything
 is deterministic Python: run the scripts yourself and show the user the results — don't hand them
 commands. Reply in the user's language.
 
 Scripts: `S=${CLAUDE_PLUGIN_ROOT}/scripts`. Get the interpreter once per session:
-`PY=$(bash "$S/setup.sh" | tail -1)` — the first run creates `~/.cache/appshotkit/venv` and installs
+`PY=$(bash "$S/setup.sh" | tail -1)` — the first run creates `~/.cache/app-screenshots-in-every-language/venv` and installs
 Pillow, NumPy, OpenCV and fontTools (tell the user); it prints which font will be used.
 Run every command from the user's repo root; paths below start with `appshots/`.
 

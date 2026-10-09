@@ -1,6 +1,6 @@
-# appshotkit — design notes
+# app-screenshots-in-every-language — design notes
 
-Author: Huy Pham (@huypham85). Extracted from the screenshot pipeline built for the Doz iOS app.
+Author: Huy Pham ([@huyphamm85](https://x.com/huyphamm85) on X, huypham85 on GitHub). Extracted from the screenshot pipeline built for the Doz iOS app.
 
 ## Goal
 Let any iOS developer using Claude Code (a) build App Store screenshots from real captures of their
@@ -10,7 +10,7 @@ language and its translations in one session.
 
 ## Decisions (v0.1)
 - **Distribution**: a Claude Code plugin; the repo is its own marketplace (MIT, personal GitHub).
-- **Two skills, one shared `scripts/`**: `appshotkit-compose` (new frames) and `appshotkit-localize`
+- **Two skills, one shared `scripts/`**: `make-app-screenshots` (new frames) and `localize-app-screenshots`
   (text-only translation of flat PNGs). Shared core avoids duplicated rendering code.
 - **Scope**: iPhone 6.9" (1290×2796) only — the size App Store Connect requires; smaller iPhone
   sizes are scaled from it. iPad and Google Play later.

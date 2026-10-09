@@ -1,4 +1,4 @@
-/* appshotkit base styles. Look comes from CSS variables that compose.py writes from brand.json. */
+/* app-screenshots-in-every-language base styles. Look comes from CSS variables that compose.py writes from brand.json. */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: var(--canvas-w); height: var(--canvas-h); overflow: hidden; }
 body { position: relative; background: var(--bg); font-family: var(--font-text), sans-serif;

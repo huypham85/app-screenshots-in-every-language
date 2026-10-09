@@ -1,10 +1,19 @@
 {
-  "name": "appshotkit",
+  "name": "app-screenshots-in-every-language",
   "version": "0.1.0",
-  "description": "Make App Store screenshots from real simulator captures and localize them into every language, pixel-exact. Two skills: compose and localize.",
-  "author": { "name": "Huy Pham", "url": "https://github.com/huypham85" },
-  "homepage": "https://github.com/huypham85/appshotkit",
-  "repository": "https://github.com/huypham85/appshotkit",
+  "description": "Your App Store screenshots in every language: make them from real iOS Simulator captures, or localize the ones you have, pixel-exact. Skills: make-app-screenshots, localize-app-screenshots.",
+  "author": {
+    "name": "Huy Pham",
+    "url": "https://x.com/huyphamm85"
+  },
+  "homepage": "https://github.com/huypham85/app-screenshots-in-every-language",
+  "repository": "https://github.com/huypham85/app-screenshots-in-every-language",
   "license": "MIT",
-  "keywords": ["app-store", "screenshots", "localization", "ios", "aso"]
+  "keywords": [
+    "app-store",
+    "screenshots",
+    "localization",
+    "ios",
+    "aso"
+  ]
 }

@@ -1,10 +1,13 @@
 {
-  "name": "appshotkit",
-  "description": "App Store screenshot skills for Claude Code",
-  "owner": { "name": "Huy Pham", "url": "https://github.com/huypham85" },
+  "name": "huypham85",
+  "description": "Claude Code plugins by Huy Pham",
+  "owner": {
+    "name": "Huy Pham",
+    "url": "https://github.com/huypham85"
+  },
   "plugins": [
     {
-      "name": "appshotkit",
+      "name": "app-screenshots-in-every-language",
       "source": "./",
       "description": "Compose App Store screenshots from simulator captures and localize them into every language"
     }

@@ -1,16 +1,16 @@
 ---
-name: appshotkit-compose
-description: Build NEW App Store screenshots (iPhone 6.9", 1290×2796) for an iOS app from real captures of the app running in the iOS Simulator — gradient background, two-colour headline, device frame, floating card lifted from the UI — rendered with headless Chrome, then produced in every language the app supports. Learns the look from the app's existing store screenshots or asks for brand colours. Also adds overlays such as laurel "5-star reviews" badges to an existing screenshot. Use whenever someone wants App Store screenshots made for their app or a feature ("make App Store screenshots", "create a screenshot for our new feature", "store images for my iOS app in all languages", "add a rating badge to the first screenshot"). To only translate existing flat PNGs use appshotkit-localize.
+name: make-app-screenshots
+description: Build NEW App Store screenshots (iPhone 6.9", 1290×2796) for an iOS app from real captures of the app running in the iOS Simulator — gradient background, two-colour headline, device frame, floating card lifted from the UI — rendered with headless Chrome, then produced in every language the app supports. Learns the look from the app's existing store screenshots or asks for brand colours. Also adds overlays such as laurel "5-star reviews" badges to an existing screenshot. Use whenever someone wants App Store screenshots made for their app or a feature ("make App Store screenshots", "create a screenshot for our new feature", "store images for my iOS app in all languages", "add a rating badge to the first screenshot"). To only translate existing flat PNGs use localize-app-screenshots.
 ---
 
-# appshotkit-compose
+# make-app-screenshots
 
 Pipeline: **idea** → **real capture on the simulator** → **HTML frame** → **PNG** → **every locale**.
 Run everything yourself and show the user the PNGs; reply in their language.
 
 Scripts: `S=${CLAUDE_PLUGIN_ROOT}/scripts`; templates: `${CLAUDE_PLUGIN_ROOT}/templates`.
 `PY=$(bash "$S/setup.sh" | tail -1)` once (needs Python 3, Google Chrome, Xcode for captures). The
-first run creates a virtualenv in `~/.cache/appshotkit/venv` and installs Pillow, NumPy, OpenCV and
+first run creates a virtualenv in `~/.cache/app-screenshots-in-every-language/venv` and installs Pillow, NumPy, OpenCV and
 fontTools there — tell the user.
 Formats: `${CLAUDE_PLUGIN_ROOT}/references/compose-format.md`.
 
